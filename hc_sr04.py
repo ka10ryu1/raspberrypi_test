@@ -36,8 +36,8 @@ def view(data):
 def main(args, i=0):
     data = np.zeros(10)
     ser = serial.Serial(args.serial_port, 9600, timeout=1)
-    print(ser.portstr)
-    time.sleep(2)
+    print('serial port: {}'.format(ser.portstr))
+    time.sleep(3)
     while i != args.get_num:
         line = ser.readline()  # シリアルデータの取得
         line = line.decode()  # byte -> string
