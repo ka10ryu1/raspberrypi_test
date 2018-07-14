@@ -1,24 +1,27 @@
+String val;
+
 void setup() {
   Serial.begin(9600);
   pinMode(8,INPUT);
   pinMode(9,INPUT);
   pinMode(10,INPUT);
-
 }
 
-void readAndPrintln(int num){
-  if(digitalRead(num) == LOW){
-    Serial.println(num);
-    Serial.println("OFF");
-  }  
+String checkSensor(int pin){
+  if(digitalRead(pin) == HIGH){
+    return "1";
+  }
+  return "0";
 }
 
 void loop() {
 
-  readAndPrintln(8);
-  readAndPrintln(9);
-  readAndPrintln(10);
-  
-  delay(1000);
+  val = "5";
+  val.concat(checkSensor(8));
+  val.concat(checkSensor(9));
+  val.concat(checkSensor(10));
+  //Serial.println(val);
+  Serial.print(val);
+  delay(2000);
 
-}
+} 
